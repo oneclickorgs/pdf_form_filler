@@ -33,14 +33,16 @@ pdf = Prawn::Document.new(:template => input_file)
 
 pdf.go_to_page(1)
 stroke_axis(pdf) if axes
-pdf.text_box("OCO Digital IPS", :at => [45, pdf.cursor - 167])
+
+pdf.text_box("OCO Digital IPS", :at => [45, 603])
 
 pdf.go_to_page(2)
 stroke_axis(pdf) if axes
 pdf.go_to_page(3)
-pdf.text_box("x", :at => [136.5, pdf.cursor - 157])
-pdf.text_box("x", :at => [403.5, pdf.cursor - 157])
 stroke_axis(pdf) if axes
+
+pdf.text_box("x", :at => [136.5, 613])
+pdf.text_box("x", :at => [403.5, 613])
 pdf.go_to_page(4)
 stroke_axis(pdf) if axes
 pdf.go_to_page(5)
