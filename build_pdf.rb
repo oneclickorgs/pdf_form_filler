@@ -38,21 +38,32 @@ pdf.text_box("OCO Digital IPS", :at => [45, 603])
 
 pdf.go_to_page(2)
 stroke_axis(pdf) if axes
+
 pdf.go_to_page(3)
 stroke_axis(pdf) if axes
 
 pdf.text_box("x", :at => [136.5, 613])
 pdf.text_box("x", :at => [403.5, 613])
+
+pdf.font_size(9)
+pdf.text_box("Christopher Mear", :at => [230, 365])
+pdf.text_box("Director", :at => [230, 343])
+
 pdf.go_to_page(4)
 stroke_axis(pdf) if axes
+
 pdf.go_to_page(5)
 stroke_axis(pdf) if axes
+
 pdf.go_to_page(6)
 stroke_axis(pdf) if axes
+
 pdf.go_to_page(7)
 stroke_axis(pdf) if axes
+
 pdf.go_to_page(8)
 stroke_axis(pdf) if axes
+
 pdf.go_to_page(9)
 stroke_axis(pdf) if axes
 
