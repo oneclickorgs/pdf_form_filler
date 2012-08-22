@@ -2,3 +2,71 @@
 organisation_name: The Digital IPS
 register_new: true
 name_rule_number: 1
+register_new_completed: true
+contact_name: Christopher Mear
+contact_position: Director
+contact_address: |
+  1 High Street
+  London
+  N1 1AA
+contact_phone: 020 1234 5678
+contact_email: chris@example.com
+timing_factors:
+rules_attached: true
+name_rule_number: 1
+objects_rule_number: 5
+registered_office_rule_number: 2
+member_admission_rule_number: 14–29
+meetings_rule_number: 44–90
+board_rule_number: 91–111
+maximum_shareholding_rule_number: 35
+loans_rule_number: 10
+share_transactions: 32, 36–41
+audit_rule_number: 147–151
+withdrawals_rule_number: 27–31
+profits_rule_number: 129
+seal_rule_number: 137
+investing_rule_number: 13
+year_end_day_1: 3
+year_end_day_2: 1
+year_end_month_1: 0
+year_end_month_2: 8
+year_end_year_1: 2
+year_end_year_2: 0
+year_end_year_3: 1
+year_end_year_4: 3
+membership_required_yes: true
+membership_required_no: false
+bona_fide_cooperative: true
+benefit_of_community: false
+ips_type_explanation: (IPS type explanation)
+close_links: (Close links)
+close_links_extra_pages: 0
+model_rules_yes: true
+model_name: Co-operatives UK Multi-stakeholder Co-operative Model Rules
+sponsoring_body_name: Co-operatives UK
+no_changes: true
+member_1_name: Christopher Mear
+member_1_address: |
+  1 High Street
+  London
+  N1 1AA
+member_1_phone: 020 1234 5678
+member_2_name: Jenny Carpenter
+member_2_address: |
+  56 Main Road
+  London
+  E1 1AA
+member_2_phone: 020 8765 4321
+member_3_name: Bob Baker
+member_3_address: |
+  23 Boulevard Avenue
+  Manchester
+  M60 1AA
+member_3_phone: 0161 123 4567
+secretary_name: Sally Smith
+secretary_address: |
+  78 Forest Close
+  London
+  S1 1AA
+secretary_phone: 020 1324 3546

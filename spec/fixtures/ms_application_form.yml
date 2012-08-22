@@ -12,7 +12,120 @@ defaults:
   register_new:
     box: [170.75, 195.15, 7, 7]
     check_box: true
+  register_new_completed:
+    box: [438.8, 194.9, 7, 7]
+    check_box: true
+  contact_name: [263.5, 432.9, 260.9, 21.6]
+  contact_position: [263.5, 455.6, 260.9, 21.6]
+  contact_address:
+    box: [263.5, 481.5, 260.9, 38.8]
+    vertical_align: top
+  contact_phone: [263.5, 520.4, 260.9, 21.6]
+  contact_email: [263.5, 541.3, 260.9, 21.6]
+  timing_factors:
+    box: [170.9, 611.3, 353.3, 69.5]
+    vertical_align: top
+  rules_attached:
+    box: [423.7, 728.2, 7, 7]
+    check_box: true
+
 4:
   name_rule_number:
     box: [432, 151, 92, 14]
     text_align: center
+  objects_rule_number:
+    box: [432, 165.8, 92, 14]
+    text_align: center
+  registered_office_rule_number:
+    box: [432, 180.5, 92, 37]
+    text_align: center
+  member_admission_rule_number:
+    box: [432, 219, 92, 37]
+    text_align: center
+  meetings_rule_number:
+    box: [432, 257.6, 92, 25.1]
+    text_align: center
+  board_rule_number:
+    box: [432, 284.1, 92, 48.8]
+    text_align: center
+  maximum_shareholding_rule_number:
+    box: [432, 334.4, 92, 37.1]
+    text_align: center
+  loans_rule_number:
+    box: [432, 373.4, 92, 48.5]
+    text_align: center
+  share_transactions:
+    box: [432, 423.6, 92, 72.8]
+    text_align: center
+  audit_rule_number:
+    box: [432, 498.1, 92, 37]
+    text_align: center
+  withdrawals_rule_number:
+    box: [432, 537.2, 92, 60]
+    text_align: center
+  profits_rule_number:
+    box: [432, 599, 92, 13.3]
+    text_align: center
+  seal_rule_number:
+    box: [432, 613.4, 92, 25.3]
+    text_align: center
+  investing_rule_number:
+    box: [432, 640, 92, 25.3]
+    text_align: center
+5:
+  year_end_day_1: [206.4, 151.3, 17.5, 19.3]
+  year_end_day_2: [224.5, 151.3, 17.5, 19.3]
+  year_end_month_1: [260.4, 151.3, 17.5, 19.3]
+  year_end_month_2: [278.5, 151.3, 17.5, 19.3]
+  year_end_year_1: [314.5, 151.3, 17.5, 19.3]
+  year_end_year_2: [332.5, 151.3, 17.5, 19.3]
+  year_end_year_3: [350.4, 151.3, 17.5, 19.3]
+  year_end_year_4: [368.5, 151.3, 17.5, 19.3]
+  membership_required_yes:
+    box: [171.65, 235.09, 7.15, 7.15]
+    check_box: true
+  membership_required_no:
+    box: [171.65, 248.26, 7.15, 7.15]
+    check_box: true
+  bona_fide_cooperative:
+    box: [171.65, 282.99, 7.15, 7.15]
+    check_box: true
+  benefit_of_community:
+    box: [171.65, 296.18, 7.15, 7.15]
+    check_box: true
+  ips_type_explanation:
+    box: [171.16, 321.24, 353.56, 96.44]
+    vertical_align: top
+7:
+  close_links:
+    box: [170.6, 168.02, 353.56, 112.24]
+    vertical_align: top
+  close_links_extra_pages:
+    box: [170.6, 309.87, 83.01, 19.35]
+  model_rules_yes:
+    box: [171.5, 367.83, 7.15, 7.15]
+    check_box: true
+  model_name: [270.59, 468.22, 253.72, 28.34]
+  sponsoring_body_name: [270.3, 500.39, 253.72, 21.37]
+  no_changes:
+    box: [171.67, 670.18, 7.15, 7.15]
+    check_box: true
+8:
+  member_1_name: [291.01, 204.39, 233.32, 13.9]
+  member_1_address:
+    box: [291.01, 219.23, 233.32, 41.67]
+  member_1_phone: [291.01, 261.46, 233.32, 13.9]
+  member_2_name: [291.01, 319.53, 233.32, 13.9]
+  member_2_address:
+    box: [291.01, 334.37, 233.32, 41.67]
+  member_2_phone: [291.01, 376.6, 233.32, 13.9]
+  member_3_name: [291.01, 434.67, 233.32, 13.9]
+  member_3_address:
+    box: [291.01, 449.51, 233.32, 41.67]
+  member_3_phone: [291.01, 491.74, 233.32, 13.9]
+  secretary_name: [291.01, 577.44, 233.32, 13.9]
+  secretary_address:
+    box: [291.01, 592.28, 233.32, 41.67]
+  secretary_phone: [291.01, 634.51, 233.32, 13.9]
+
+
