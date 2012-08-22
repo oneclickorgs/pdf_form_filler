@@ -29,17 +29,20 @@ class PdfFormFiller::Form
       @pdf.go_to_page(page_number)
 
       @pdf.fill_color = "ff0000"
+      @pdf.transparent(0.5) do
 
-      if @definition[page_number] && @definition[page_number].respond_to?(:each)
-        @definition[page_number].each do |name, box_definition|
-          if box_definition.is_a?(Hash)
-            box_coords = box_definition['box']
-          else
-            box_coords = box_definition
+        if @definition[page_number] && @definition[page_number].respond_to?(:each)
+          @definition[page_number].each do |name, box_definition|
+            if box_definition.is_a?(Hash)
+              box_coords = box_definition['box']
+            else
+              box_coords = box_definition
+            end
+            local_box_coords = convert_to_local(box_coords)
+            @pdf.fill_rectangle([local_box_coords[0], local_box_coords[1]], local_box_coords[2], local_box_coords[3])
           end
-          local_box_coords = convert_to_local(box_coords)
-          @pdf.fill_rectangle([local_box_coords[0], local_box_coords[1]], local_box_coords[2], local_box_coords[3])
         end
+
       end
     end
   end
