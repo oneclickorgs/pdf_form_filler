@@ -1,0 +1,12 @@
+---
+defaults:
+  x_offset: 35
+  y_offset: 806
+  invert_y: true
+1:
+  organisation_name: [76, 189, 377, 36]
+3:
+4:
+  name_rule_number:
+    box: [432, 151, 92, 14]
+    text-align: center

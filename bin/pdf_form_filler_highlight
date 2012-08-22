@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require 'pdf_form_filler'
+
+template = ARGV[0]
+definition = ARGV[1]
+output = ARGV[2]
+
+document = PdfFormFiller::Form.new(:template => template, :definition => definition)
+document.highlight_fields
+document.render_file(output)
