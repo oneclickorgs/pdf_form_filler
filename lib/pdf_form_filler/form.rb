@@ -16,6 +16,19 @@ class PdfFormFiller::Form
     # In Prawn, x runs left to right, and y runs bottom to top. If either
     # of the axes in your co-ordinate system run opposite to this, set
     # invert_x and/or invert_y to true.
+
+    if @definition['defaults']
+      @font_size = @definition['defaults']['font_size'] || 12
+      @horizontal_padding = @definition['defaults']['horizontal_padding'] || 5
+      @vertical_padding = @definition['defaults']['vertical_padding'] || 5
+      @text_align = (@definition['defaults']['text_align'] || :left).to_sym
+    else
+      @font_size = 12
+      @horizontal_padding = 5
+      @vertical_padding = 5
+      @text_align = :left
+    end
+
   end
 
   def fill_form(data)
@@ -32,8 +45,12 @@ class PdfFormFiller::Form
         @definition[page_number].each do |name, box_definition|
           if box_definition.is_a?(Hash)
             box_coords = box_definition['box']
+            font_size = box_definition['font_size'] || @font_size
+            text_align = (box_definition['text_align'] || @text_align).to_sym
           else
             box_coords = box_definition
+            font_size = @font_size
+            text_align = @text_align
           end
           local_box_coords = convert_to_local(box_coords)
 
@@ -42,8 +59,15 @@ class PdfFormFiller::Form
             @pdf.fill_rectangle([local_box_coords[0], local_box_coords[1]], local_box_coords[2], local_box_coords[3])
           end
 
+          @pdf.font_size(font_size)
           @pdf.fill_color = "000000"
-          @pdf.text_box(name, :at => [local_box_coords[0], local_box_coords[1]], :width => local_box_coords[2], :height => local_box_coords[3])
+          @pdf.text_box(name,
+            :at => [local_box_coords[0] + (@horizontal_padding / 2.0), local_box_coords[1] - (@vertical_padding / 2.0)],
+            :width => local_box_coords[2] - @horizontal_padding,
+            :height => local_box_coords[3] - @vertical_padding,
+            :align => text_align,
+            :valign => :center
+          )
         end
       end
 
