@@ -22,11 +22,13 @@ class PdfFormFiller::Form
       @horizontal_padding = @definition['defaults']['horizontal_padding'] || 5
       @vertical_padding = @definition['defaults']['vertical_padding'] || 1
       @text_align = (@definition['defaults']['text_align'] || :left).to_sym
+      @vertical_align = (@definition['defaults']['vertical_align'] || :center).to_sym
     else
       @font_size = 12
       @horizontal_padding = 5
       @vertical_padding = 1
       @text_align = :left
+      @vertical_align = :center
     end
 
   end
@@ -44,6 +46,7 @@ class PdfFormFiller::Form
 
             if check_box
               text_align = :center
+              vertical_align = :center
               font_size = box_coords[3] + 0.5
               horizontal_padding = 0
               vertical_padding = 0
@@ -53,6 +56,11 @@ class PdfFormFiller::Form
               text_align = box_definition['text_align'].to_sym
             end
             text_align ||= @text_align
+
+            if box_definition['vertical_align']
+              vertical_align = box_definition['vertical_align'].to_sym
+            end
+            vertical_align ||= @vertical_align
 
             if box_definition['font_size']
               font_size = box_definition['font_size']
@@ -72,6 +80,7 @@ class PdfFormFiller::Form
             box_coords = box_definition
             font_size = @font_size
             text_align = @text_align
+            vertical_align = @vertical_align
             horizontal_padding = @horizontal_padding
             vertical_padding = @vertical_padding
           end
@@ -90,7 +99,7 @@ class PdfFormFiller::Form
             :width => local_box_coords[2] - horizontal_padding,
             :height => local_box_coords[3] - vertical_padding,
             :align => text_align,
-            :valign => :center
+            :valign => vertical_align
           )
         end
       end
@@ -111,7 +120,8 @@ class PdfFormFiller::Form
 
             if check_box
               text_align = :center
-              font_size = box_coords[3]
+              vertical_align = :center
+              font_size = box_coords[3] + 0.5
               horizontal_padding = 0
               vertical_padding = 0
             end
@@ -120,6 +130,11 @@ class PdfFormFiller::Form
               text_align = box_definition['text_align'].to_sym
             end
             text_align ||= @text_align
+
+            if box_definition['vertical_align']
+              vertical_align = box_definition['vertical_align'].to_sym
+            end
+            vertical_align ||= @vertical_align
 
             if box_definition['font_size']
               font_size = box_definition['font_size']
@@ -139,6 +154,7 @@ class PdfFormFiller::Form
             box_coords = box_definition
             font_size = @font_size
             text_align = @text_align
+            vertical_align = @vertical_align
             horizontal_padding = @horizontal_padding
             vertical_padding = @vertical_padding
           end
@@ -156,7 +172,7 @@ class PdfFormFiller::Form
             :width => local_box_coords[2] - horizontal_padding,
             :height => local_box_coords[3] - vertical_padding,
             :align => text_align,
-            :valign => :center,
+            :valign => vertical_align,
             :overflow => :shrink_to_fit
           )
         end
