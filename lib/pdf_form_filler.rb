@@ -1,5 +1,4 @@
-#!/usr/bin/env ruby
-
+require 'pdf_form_filler/version'
 require 'prawn'
 
 axes = false
