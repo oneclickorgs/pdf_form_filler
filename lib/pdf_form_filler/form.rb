@@ -20,12 +20,12 @@ class PdfFormFiller::Form
     if @definition['defaults']
       @font_size = @definition['defaults']['font_size'] || 12
       @horizontal_padding = @definition['defaults']['horizontal_padding'] || 5
-      @vertical_padding = @definition['defaults']['vertical_padding'] || 5
+      @vertical_padding = @definition['defaults']['vertical_padding'] || 1
       @text_align = (@definition['defaults']['text_align'] || :left).to_sym
     else
       @font_size = 12
       @horizontal_padding = 5
-      @vertical_padding = 5
+      @vertical_padding = 1
       @text_align = :left
     end
 
@@ -40,22 +40,55 @@ class PdfFormFiller::Form
           if box_definition.is_a?(Hash)
             box_coords = box_definition['box']
             font_size = box_definition['font_size'] || @font_size
-            text_align = (box_definition['text_align'] || @text_align).to_sym
+            check_box = box_definition['check_box']
+
+            if check_box
+              text_align = :center
+              font_size = box_coords[3] + 0.5
+              horizontal_padding = 0
+              vertical_padding = 0
+            end
+
+            if box_definition['text_align']
+              text_align = box_definition['text_align'].to_sym
+            end
+            text_align ||= @text_align
+
+            if box_definition['font_size']
+              font_size = box_definition['font_size']
+            end
+            font_size ||= @font_size
+
+            if box_definition['horizontal_padding']
+              horizontal_padding = box_definition['horizontal_padding']
+            end
+            horizontal_padding ||= @horizontal_padding
+
+            if box_definition['vertical_padding']
+              vertical_padding = box_definition['vertical_padding']
+            end
+            vertical_padding ||= @vertical_padding
           else
             box_coords = box_definition
             font_size = @font_size
             text_align = @text_align
+            horizontal_padding = @horizontal_padding
+            vertical_padding = @vertical_padding
           end
           local_box_coords = convert_to_local(box_coords)
 
-          value = (data[name.to_s] || data[name.to_sym] || '').to_s
+          if check_box
+            value = (data[name.to_s] || data[name.to_sym]) ? 'x' : ''
+          else
+            value = (data[name.to_s] || data[name.to_sym] || '').to_s
+          end
 
           @pdf.font_size(font_size)
           @pdf.fill_color = "000000"
           @pdf.text_box(value,
-            :at => [local_box_coords[0] + (@horizontal_padding / 2.0), local_box_coords[1] - (@vertical_padding / 2.0)],
-            :width => local_box_coords[2] - @horizontal_padding,
-            :height => local_box_coords[3] - @vertical_padding,
+            :at => [local_box_coords[0] + (horizontal_padding / 2.0), local_box_coords[1] - (vertical_padding / 2.0)],
+            :width => local_box_coords[2] - horizontal_padding,
+            :height => local_box_coords[3] - vertical_padding,
             :align => text_align,
             :valign => :center
           )
@@ -74,11 +107,40 @@ class PdfFormFiller::Form
           if box_definition.is_a?(Hash)
             box_coords = box_definition['box']
             font_size = box_definition['font_size'] || @font_size
-            text_align = (box_definition['text_align'] || @text_align).to_sym
+            check_box = box_definition['check_box']
+
+            if check_box
+              text_align = :center
+              font_size = box_coords[3]
+              horizontal_padding = 0
+              vertical_padding = 0
+            end
+
+            if box_definition['text_align']
+              text_align = box_definition['text_align'].to_sym
+            end
+            text_align ||= @text_align
+
+            if box_definition['font_size']
+              font_size = box_definition['font_size']
+            end
+            font_size ||= @font_size
+
+            if box_definition['horizontal_padding']
+              horizontal_padding = box_definition['horizontal_padding']
+            end
+            horizontal_padding ||= @horizontal_padding
+
+            if box_definition['vertical_padding']
+              vertical_padding = box_definition['vertical_padding']
+            end
+            vertical_padding ||= @vertical_padding
           else
             box_coords = box_definition
             font_size = @font_size
             text_align = @text_align
+            horizontal_padding = @horizontal_padding
+            vertical_padding = @vertical_padding
           end
           local_box_coords = convert_to_local(box_coords)
 
@@ -90,11 +152,12 @@ class PdfFormFiller::Form
           @pdf.font_size(font_size)
           @pdf.fill_color = "000000"
           @pdf.text_box(name,
-            :at => [local_box_coords[0] + (@horizontal_padding / 2.0), local_box_coords[1] - (@vertical_padding / 2.0)],
-            :width => local_box_coords[2] - @horizontal_padding,
-            :height => local_box_coords[3] - @vertical_padding,
+            :at => [local_box_coords[0] + (horizontal_padding / 2.0), local_box_coords[1] - (vertical_padding / 2.0)],
+            :width => local_box_coords[2] - horizontal_padding,
+            :height => local_box_coords[3] - vertical_padding,
             :align => text_align,
-            :valign => :center
+            :valign => :center,
+            :overflow => :shrink_to_fit
           )
         end
       end
