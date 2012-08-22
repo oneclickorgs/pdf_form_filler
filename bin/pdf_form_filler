@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require 'pdf_form_filler'
+
+require 'yaml'
+
+template = ARGV[0]
+definition = ARGV[1]
+data_file = ARGV[2]
+output = ARGV[3]
+
+data = YAML.load_file(data_file)
+
+document = PdfFormFiller::Form.new(:template => template, :definition => definition)
+document.fill_form(data)
+document.render_file(output)

@@ -34,6 +34,34 @@ class PdfFormFiller::Form
   def fill_form(data)
     1.upto(@pdf.page_count) do |page_number|
       @pdf.go_to_page(page_number)
+
+      if @definition[page_number] && @definition[page_number].respond_to?(:each)
+        @definition[page_number].each do |name, box_definition|
+          if box_definition.is_a?(Hash)
+            box_coords = box_definition['box']
+            font_size = box_definition['font_size'] || @font_size
+            text_align = (box_definition['text_align'] || @text_align).to_sym
+          else
+            box_coords = box_definition
+            font_size = @font_size
+            text_align = @text_align
+          end
+          local_box_coords = convert_to_local(box_coords)
+
+          value = (data[name.to_s] || data[name.to_sym] || '').to_s
+
+          @pdf.font_size(font_size)
+          @pdf.fill_color = "000000"
+          @pdf.text_box(value,
+            :at => [local_box_coords[0] + (@horizontal_padding / 2.0), local_box_coords[1] - (@vertical_padding / 2.0)],
+            :width => local_box_coords[2] - @horizontal_padding,
+            :height => local_box_coords[3] - @vertical_padding,
+            :align => text_align,
+            :valign => :center
+          )
+        end
+      end
+
     end
   end
 
