@@ -10,6 +10,8 @@ class PdfFormFiller::Form
 
     @pdf = Prawn::Document.new(:template => @template)
 
+    @pdf.font(File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'fonts', 'LiberationSans-Regular.ttf')))
+
     # x_offset, y_offset is the position of the Prawn origin, as expressed
     # in the co-ordinate system used for the rest of the measurements.
     #
