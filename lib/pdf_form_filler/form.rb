@@ -185,6 +185,10 @@ class PdfFormFiller::Form
     @pdf.render_file(output)
   end
 
+  def render
+    @pdf.render
+  end
+
 protected
 
   def convert_to_local(box_coords)
