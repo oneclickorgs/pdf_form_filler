@@ -1,7 +1,9 @@
 PDF Form Filler
 ===============
 
-TODO: Write README.
+PDF Form Filler is a very simple library for drawing text on top of a PDF. It doesn't use any
+native PDF form functionality; you just specify the co-ordinates where you want to draw
+text.
 
 License
 -------

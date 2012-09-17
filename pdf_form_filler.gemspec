@@ -4,7 +4,7 @@ require File.expand_path('../lib/pdf_form_filler/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Chris Mear"]
   gem.email         = 'chris@feedmechocolate.com'
-  gem.description   = "pdf_form_filler fills in a PDF form using fields defined by co-ordinates in a YAML file."
+  gem.description   = "pdf_form_filler is a very simple tool for filling in PDF forms"
   gem.summary       = "pdf_form_filler fills in a PDF form using fields defined by co-ordinates in a YAML file."
   gem.homepage      = 'https://github.com/chrismear/pdf_form_filler'
 
