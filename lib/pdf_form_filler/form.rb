@@ -8,7 +8,17 @@ class PdfFormFiller::Form
     @definition_file = options[:definition]
     @definition = YAML.load_file(@definition_file)
 
+    # Work around Prawn bug where using a multi-page template
+    # results in 'Error 14' when the generated PDF is opened in
+    # Adobe Reader.
+    #
+    # See: https://github.com/prawnpdf/prawn/issues/364
     @pdf = Prawn::Document.new(:template => @template)
+    page_count = @pdf.page_count
+    @pdf = Prawn::Document.new(:skip_page_creation => true)
+    1.upto(page_count) do |page_number|
+      @pdf.start_new_page(:template => @template, :template_page => page_number)
+    end
 
     @pdf.font(File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'fonts', 'LiberationSans-Regular.ttf')))
 
