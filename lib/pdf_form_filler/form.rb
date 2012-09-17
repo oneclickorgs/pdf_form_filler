@@ -59,7 +59,7 @@ class PdfFormFiller::Form
             if check_box
               text_align = :center
               vertical_align = :center
-              font_size = box_coords[3] + 0.5
+              font_size = box_coords[3]
               horizontal_padding = 0
               vertical_padding = 0
             end
@@ -99,7 +99,7 @@ class PdfFormFiller::Form
           local_box_coords = convert_to_local(box_coords)
 
           if check_box
-            value = (data[name.to_s] || data[name.to_sym]) ? 'x' : ''
+            value = (data[name.to_s] || data[name.to_sym]) ? 'X ' : ''
           else
             value = (data[name.to_s] || data[name.to_sym] || '').to_s
           end
