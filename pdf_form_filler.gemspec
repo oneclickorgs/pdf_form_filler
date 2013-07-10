@@ -9,6 +9,8 @@ Gem::Specification.new do |gem|
   gem.homepage      = 'https://github.com/chrismear/pdf_form_filler'
 
   gem.files         = `git ls-files`.split($\)
+  gem.bindir        = 'bin'
+  gem.executables   = ['pdf_form_filler', 'pdf_form_filler_highlight']
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = 'pdf_form_filler'
   gem.require_paths = ["lib"]
