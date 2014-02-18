@@ -1,4 +1,6 @@
 require 'prawn'
+require 'prawn/templates'
+require 'pdf/reader'
 require 'yaml'
 
 class PdfFormFiller::Form

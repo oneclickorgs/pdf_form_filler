@@ -16,7 +16,10 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = PdfFormFiller::VERSION
 
-  gem.add_dependency 'prawn', '~>0.12.0'
+  gem.add_dependency 'prawn', '~>0.15.0'
+  # Template functionality was extracted from prawn in version 0.15.
+  gem.add_dependency 'prawn-templates', '~>0.0.1'
+  gem.add_dependency 'pdf-reader', '~>1.3.3'
 
   gem.add_development_dependency 'rake', '~>10.1.1'
   gem.add_development_dependency 'rspec', '~>2.11.0'
