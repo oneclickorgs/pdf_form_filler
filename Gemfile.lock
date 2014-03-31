@@ -26,7 +26,7 @@ GEM
     prawn-templates (0.0.1)
       pdf-reader (~> 1.2)
       prawn (>= 0.15.0)
-    rake (10.1.1)
+    rake (10.2.2)
     rspec (2.11.0)
       rspec-core (~> 2.11.0)
       rspec-expectations (~> 2.11.0)
@@ -43,5 +43,5 @@ PLATFORMS
 
 DEPENDENCIES
   pdf_form_filler!
-  rake (~> 10.1.1)
+  rake (~> 10.2.2)
   rspec (~> 2.11.0)

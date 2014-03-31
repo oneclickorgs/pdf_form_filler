@@ -21,6 +21,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'prawn-templates', '~>0.0.1'
   gem.add_dependency 'pdf-reader', '~>1.3.3'
 
-  gem.add_development_dependency 'rake', '~>10.1.1'
+  gem.add_development_dependency 'rake', '~>10.2.2'
   gem.add_development_dependency 'rspec', '~>2.11.0'
 end
